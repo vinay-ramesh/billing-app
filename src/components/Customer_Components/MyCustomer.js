@@ -5,7 +5,7 @@ const MyCustomer = (props) => {
 
     return (
         <div>
-            <h2>My Customers</h2>
+            <h2 className=" container justify-content-centre align-items-centre">My Customers</h2>
             <CustomerContainer />
         </div>
     )

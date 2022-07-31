@@ -1,0 +1,22 @@
+.nav-container {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.invalid-feedback {
+    display: block;
+    color: red;
+    text-align: left;
+}
+
+.customer-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.img-fluid {
+    margin-top: 0%;
+}

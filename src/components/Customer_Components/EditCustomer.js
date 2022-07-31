@@ -2,12 +2,12 @@ import React from "react";
 import CustomerForm from "./CustomerForm";
 
 const EditCustomer = (props) => {
-    const { _id, name, mobile, handleCustomerToggle, email } = props
+    const { editCustomer, handleCustomerToggle } = props
     return (
         <div>
-            <CustomerForm _id={_id} name={name} mobile={mobile} email={email} handleCustomerToggle={handleCustomerToggle} />
+            <CustomerForm _id={editCustomer._id} name={editCustomer.name} mobile={editCustomer.mobile} email={editCustomer.email} handleCustomerToggle={handleCustomerToggle} />
         </div>
     )
 }
 
-export default EditCustomer
+export default EditCustomer 

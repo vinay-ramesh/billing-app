@@ -11,11 +11,12 @@ const cutsomerRegisterSchema = Yup.object().shape({
         .max(128)
         .required("Provide Customer Name"),
     mobile: Yup.number()
-        /* .min(10)
-        .max(10) */
-        .required("Number cannot be blank"),
+        .min(10)
+        .max(10)
+        .required("Phone number cannot be blank"),
     email: Yup.string()
         .email()
+        .required("Provide Email Id")
 })
 
 const CustomerForm = (props) => {
@@ -43,35 +44,49 @@ const CustomerForm = (props) => {
 
     return (
         <div>
+            <h3>Add Customer</h3>
             <form onSubmit={formik.handleSubmit}>
                 <label>Name</label><br />
                 <input
                     type="text"
+                    placeholder="Ex : Demo"
                     value={formik.values.name}
                     onChange={formik.handleChange}
                     name="name"
-                /> {formik.errors.name}
-                <br /><br />
+                />
+                <div class="h4 invalid-feedback">
+                    {formik.errors.name}
+                </div>
 
                 <label>Mobile</label><br />
                 <input
                     type="text"
+                    placeholder="Ex : 9876543210"
                     value={formik.values.mobile}
                     onChange={formik.handleChange}
                     name="mobile"
-                /> {formik.errors.mobile}
-                <br /><br />
+                />
+                <div class=" h4 invalid-feedback">
+                    {formik.errors.mobile}
+                </div>
+
 
                 <label>Email</label><br />
                 <input
                     type="text"
+                    placeholder="Ex : demo@gmail.com"
                     value={formik.values.email}
                     onChange={formik.handleChange}
                     name="email"
-                /> {formik.errors.email}
-                <br /><br />
+                />
+                <div class=" h4 invalid-feedback">
+                    {formik.errors.email}
+                </div>
 
-                <input type="submit" />
+                {/* <input type="submit" class="btn btn-primary float-start" /> */}
+                <div className="col-md-12 mt-3">
+                    <button type="submit" class="btn btn-primary float-start" onClick={formik.handleSubmit} >Submit</button>
+                </div>
             </form>
         </div>
     )

@@ -4,6 +4,11 @@ import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import App from "./App";
 import configureStore from "./store/configureStore";
+import { asyncGetUsers } from "./actions/userActions"
+import { startGetProduct } from "./actions/productActions"
+import { asyncGetCustomers } from "./actions/customerActions"
+import { startGetBill } from "./actions/billActions";
+
 
 const store = configureStore()
 console.log("state", store.getState())
@@ -11,6 +16,13 @@ console.log("state", store.getState())
 store.subscribe(() => {
     console.log("state updated", store.getState())
 })
+
+if (localStorage.getItem("token")) {
+    store.dispatch(asyncGetUsers())
+    store.dispatch(asyncGetCustomers())
+    store.dispatch(startGetProduct())
+    store.dispatch(startGetBill())
+}
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

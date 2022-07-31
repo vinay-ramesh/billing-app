@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useFormik } from "formik";
 import * as Yup from "yup"
+import { startPostBill } from "../../actions/billActions";
 
 const billValidationSchema = Yup.object().shape({
     date: Yup.date()
@@ -14,6 +15,8 @@ const BillForm = (props) => {
     const [formFields, setFormFields] = useState([{
         product: "", quantity: ""
     }])
+    const { updateBill } = props
+    const dispatch = useDispatch()
 
     const formik = useFormik({
         initialValues: {
@@ -21,7 +24,8 @@ const BillForm = (props) => {
             customer: ""
         },
         onSubmit: (form, { resetForm }) => {
-            console.log({ ...form, lineItems: formFields })
+            // console.log({ ...form, lineItems: formFields })
+            dispatch(startPostBill({ ...form, lineItems: formFields }, updateBill))
             resetForm()
         },
         validationSchema: billValidationSchema,
@@ -36,6 +40,7 @@ const BillForm = (props) => {
         return state.products
     })
 
+    // wrt product and quantity 
     const handleChange = (e, index) => {
         e.preventDefault()
         let data = [...formFields]
@@ -73,26 +78,28 @@ const BillForm = (props) => {
                 <label>Customer</label><br />
                 <select onChange={formik.handleChange} name="customer" >
                     <option value="">Select Customer</option>
-                    {customersInfo.map((customer, _id) => {
-                        return <option value={customer._id} key={customer._id}>{customer.name}</option>
+                    {customersInfo.map((customer, index) => {
+                        return <option value={customer._id} key={index}>{customer.name}</option>
                     })}
                 </select>
 
                 {
                     formFields.map((product, index) => {
                         return (
-                            <div>
-                                <select onChange={(e) => {
-                                    handleChange(e, index)
-                                }} name="product" >
+                            <div key={index}>
+                                <label>Product</label>
+                                <select
+                                    onChange={(e) => {
+                                        handleChange(e, index)
+                                    }} name="product" >
                                     <option value="">Select product</option>
                                     {
                                         productsInfo.map((ele) => {
-                                            return <option value={ele._id}>{ele.name}</option>
+                                            return <option key={ele._id} value={ele._id}>{ele.name}</option>
                                         })
                                     }
                                 </select>
-
+                                <label>Quantity</label>
                                 <input
                                     name="quantity"
                                     type="number"

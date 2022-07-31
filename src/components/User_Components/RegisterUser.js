@@ -16,8 +16,10 @@ const registrationSchema = Yup.object().shape({
         .min(8)
         .max(128)
         .required("Provide password!"),
-    businessName: Yup.string(),
+    businessName: Yup.string()
+        .required("Business required"),
     address: Yup.string()
+        .required("Address name required")
 })
 
 const RegisterUser = (props) => {
@@ -30,6 +32,7 @@ const RegisterUser = (props) => {
             address: ""
         },
         onSubmit: (formData, { resetForm }) => {
+            console.log(formData, "formdata")
             axios.post(`http://dct-pos-app.herokuapp.com/api/users/register`, formData)
                 .then((response) => {
                     const result = response.data
@@ -51,54 +54,81 @@ const RegisterUser = (props) => {
     })
 
     return (
-        <div>
-            <h3>Register with us</h3>
-            <form>
-                <label>Username</label> <br />
-                <input type="text"
-                    placeholder="Ex : Demo"
-                    value={formik.values.username}
-                    onChange={formik.handleChange}
-                    name="username"
-                /> {formik.errors.username}
-                <br /> <br />
+        <div className="container d-flex justify-content-center align-items-center flex-column">
+            <div className="col-md-6">
+                <h2 className="col-md-12 mt-4 text-center">Register with us</h2>
+                <form>
+                    <div>
+                        <label>Username</label> <br />
+                        <input type="text"
+                            class="form-control"
+                            placeholder="Ex : Demo"
+                            value={formik.values.username}
+                            onChange={formik.handleChange}
+                            name="username"
+                        /> <div class="h4 invalid-feedback">
+                            {formik.errors.username}
+                        </div>
+                    </div>
 
-                <label>Email</label> <br />
-                <input type="email"
-                    placeholder="Ex : demo@gmail.com"
-                    value={formik.values.email}
-                    onChange={formik.handleChange}
-                    name="email"
-                /> {formik.errors.email}
-                <br /> <br />
+                    <div>
+                        <label>Email</label> <br />
+                        <input type="email"
+                            class="form-control"
+                            placeholder="Ex : demo@gmail.com"
+                            value={formik.values.email}
+                            onChange={formik.handleChange}
+                            name="email"
+                        /> <div class="h4 invalid-feedback">
+                            {formik.errors.email}
+                        </div>
+                    </div>
 
-                <label>Password</label> <br />
-                <input type="password"
-                    placeholder="Ex : Demo@123"
-                    value={formik.values.password}
-                    onChange={formik.handleChange}
-                    name="password"
-                /> {formik.errors.password}
-                <br /> <br />
+                    <div>
+                        <label>Password</label> <br />
+                        <input type="password"
+                            class="form-control"
+                            placeholder="Ex : Demo@123"
+                            value={formik.values.password}
+                            onChange={formik.handleChange}
+                            name="password"
+                        /> <div class="h4 invalid-feedback">
+                            {formik.errors.password}
+                        </div>
+                    </div>
 
-                <label>Business</label> <br />
-                <input type="text"
-                    placeholder="Ex : Resturant"
-                    value={formik.values.businessName}
-                    onChange={formik.handleChange}
-                    name="businessName"
-                /> <br /> <br />
+                    <div>
+                        <label>Business</label> <br />
+                        <input type="text"
+                            class="form-control"
+                            placeholder="Ex : Resturant"
+                            value={formik.values.businessName}
+                            onChange={formik.handleChange}
+                            name="businessName"
+                        /><div class="h4 invalid-feedback">
+                            {formik.errors.businessName}
+                        </div>
+                    </div>
 
-                <label>Address</label> <br />
-                <input type="text"
-                    placeholder="Ex : HSR layout, Banglore"
-                    value={formik.values.address}
-                    onChange={formik.handleChange}
-                    name="address"
-                /> <br /> <br />
-                {/* <input type="submit" /> */}
-                <button type="submit" onClick={formik.handleSubmit}>submit</button>
-            </form>
+                    <div>
+                        <label>Address</label> <br />
+                        <input type="text"
+                            class="form-control"
+                            placeholder="Ex : HSR layout, Banglore"
+                            value={formik.values.address}
+                            onChange={formik.handleChange}
+                            name="address"
+                        />
+                        <div class="h4 invalid-feedback">
+                            {formik.errors.address}
+                        </div>
+                    </div>
+
+                    <div className="col-md-12 mt-3">
+                        <button type="submit" class="btn btn-primary float-start" onClick={formik.handleSubmit} >Submit</button>
+                    </div>
+                </form>
+            </div>
         </div>
     )
 }

@@ -29,7 +29,6 @@ const ProductForm = (props) => {
                 handleToggle()
             } else {
                 dispatch(startPostProduct(formData))
-
             }
             resetForm()
         },
@@ -38,7 +37,7 @@ const ProductForm = (props) => {
     })
     return (
         <div>
-            <h2>Add Product</h2>
+            <h3>Add Product</h3>
             <form onSubmit={formik.handleSubmit}>
                 <label>Product Name</label><br />
                 <input
@@ -47,7 +46,10 @@ const ProductForm = (props) => {
                     placeholder="ex: Ambuja cement "
                     value={formik.values.name}
                     onChange={formik.handleChange}
-                /><br /><br />
+                />
+                <div class="h4 invalid-feedback">
+                    {formik.errors.name}
+                </div>
 
                 <label>Product Price</label><br />
                 <input
@@ -56,9 +58,15 @@ const ProductForm = (props) => {
                     placeholder="Price in INR/-"
                     value={formik.values.price}
                     onChange={formik.handleChange}
-                /><br /><br />
+                />
+                <div class="h4 invalid-feedback">
+                    {formik.errors.price}
+                </div>
 
-                <input type="submit" value="save" />
+                {/* <input type="submit" value="save" /> */}
+                <div className="col-md-12 mt-3">
+                    <button type="submit" class="btn btn-primary float-left" onClick={formik.handleSubmit} >Submit</button>
+                </div>
             </form>
         </div>
     )

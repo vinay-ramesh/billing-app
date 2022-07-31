@@ -15,19 +15,19 @@ const ProductsList = (props) => {
     }, [dispatch])
 
     return (
-        <div>
-            <h2>Total Products - {totalProducts.length}</h2>
+        <div className="container">
+            <h3 className="text-start">Total Products - {totalProducts.length}</h3>
             {totalProducts.length === 0 ? (
                 <div>
-                    <h4>No products found</h4>
+                    <h3>No products found</h3>
                     <p>Add your first product</p>
                 </div>
             ) : (
-                <ul>
+                <div className="row">
                     {totalProducts.map((ele, _id) => {
                         return <ProductsItem key={ele._id} {...ele} />
                     })}
-                </ul>
+                </div>
             )}
         </div>
     )

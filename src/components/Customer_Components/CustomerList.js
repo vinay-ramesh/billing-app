@@ -6,7 +6,6 @@ import { asyncGetCustomers } from "../../actions/customerActions";
 const CustomerList = (props) => {
     const dispatch = useDispatch()
 
-
     useEffect(() => {
         dispatch(asyncGetCustomers())
     }, [dispatch])
@@ -15,22 +14,16 @@ const CustomerList = (props) => {
         return state.customers
     })
 
-
-
     return (
         <div>
-            <h2>Total customers - {totalCustomers.length}</h2>
+            <h3>Total customers - {totalCustomers.length}</h3>
             {totalCustomers.length === 0 ? (
                 <div>
                     <h3>No customers found</h3>
                     <p>Add your first customer</p>
                 </div>
             ) : (
-                <ul>
-                    {totalCustomers.map((ele, _id) => {
-                        return <CustomerItem key={ele._id} {...ele} />
-                    })}
-                </ul>
+                <CustomerItem totalCustomers={totalCustomers} />
             )}
         </div>
     )
