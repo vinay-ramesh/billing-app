@@ -21,7 +21,7 @@ const ProductsItem = (props) => {
     }
 
     return (
-        <div className="col-sm-4">
+        <div className="col-sm-4 p-2">
             {
                 toggle ? (
                     <div>
@@ -33,7 +33,7 @@ const ProductsItem = (props) => {
                         <div class="card-body">
                             <h5 class="card-title"><i class="bi bi-box"></i> - {name}</h5>
                             <h6 class="card-subtitle mb-2"><i class="bi bi-currency-rupee"></i> - {price}</h6>
-                            <button onClick={handleToggle}><i class="bi bi-pencil-fill"></i></button><vr />
+                            <button onClick={handleToggle}><i class="bi bi-pencil-fill"></i></button>
                             <button onClick={() => {
                                 handleRemoveProduct(_id)
                             }}><i class="bi bi-trash3-fill"></i></button>

@@ -1,4 +1,4 @@
-const userInitialState = []
+const userInitialState = {}
 
 const userReducer = (state = userInitialState, action) => {
     switch (action.type) {

@@ -1,31 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
 import BillForm from "./BillForm";
-import BillGenerator from "./BillGenerator";
+import { useHistory } from "react-router-dom";
 
 const BillContainer = (props) => {
-    const [newBill, setNewBill] = useState("")
+    const history = useHistory()
 
-    const updateBill = (data) => {
-        // console.log("bill", data)
-        setNewBill(data)
+    const handleViewAllBill = () => {
+        history.push("/bill/all")
     }
-
-    const handleGenerateNew = () => {
-        setNewBill("")
-    }
-
-    const handleViewBill = () => {
-        setNewBill("All")
-    }
-
     return (
         <div>
             <div>
-                <button onClick={handleGenerateNew}>Generate New</button>
-                <button onClick={handleViewBill}>View All</button>
+                <button onClick={handleViewAllBill}>View All</button>
             </div>
 
-            {newBill ? <BillGenerator newBill={newBill} /> : <BillForm updateBill={updateBill} />}
+            <BillForm />
         </div>
     )
 }

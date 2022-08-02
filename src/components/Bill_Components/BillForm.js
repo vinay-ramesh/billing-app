@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useFormik } from "formik";
+import { useHistory } from "react-router-dom";
 import * as Yup from "yup"
 import { startPostBill } from "../../actions/billActions";
 
@@ -15,8 +16,12 @@ const BillForm = (props) => {
     const [formFields, setFormFields] = useState([{
         product: "", quantity: ""
     }])
-    const { updateBill } = props
     const dispatch = useDispatch()
+    const history = useHistory()
+
+    const reDirect = (billId) => {
+        history.push(`/billing/${billId}`)
+    }
 
     const formik = useFormik({
         initialValues: {
@@ -25,7 +30,7 @@ const BillForm = (props) => {
         },
         onSubmit: (form, { resetForm }) => {
             // console.log({ ...form, lineItems: formFields })
-            dispatch(startPostBill({ ...form, lineItems: formFields }, updateBill))
+            dispatch(startPostBill({ ...form, lineItems: formFields }, reDirect))
             resetForm()
         },
         validationSchema: billValidationSchema,

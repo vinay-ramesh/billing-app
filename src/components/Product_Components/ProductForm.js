@@ -65,7 +65,7 @@ const ProductForm = (props) => {
 
                 {/* <input type="submit" value="save" /> */}
                 <div className="col-md-12 mt-3">
-                    <button type="submit" class="btn btn-primary float-left" onClick={formik.handleSubmit} >Submit</button>
+                    <button type="submit" className="btn btn-primary float-left" onClick={formik.handleSubmit} >Submit</button>
                 </div>
             </form>
         </div>

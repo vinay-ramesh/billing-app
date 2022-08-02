@@ -11,8 +11,8 @@ const cutsomerRegisterSchema = Yup.object().shape({
         .max(128)
         .required("Provide Customer Name"),
     mobile: Yup.number()
-        .min(10)
-        .max(10)
+        /* .min(10)
+        .max(10) */
         .required("Phone number cannot be blank"),
     email: Yup.string()
         .email()
@@ -85,7 +85,7 @@ const CustomerForm = (props) => {
 
                 {/* <input type="submit" class="btn btn-primary float-start" /> */}
                 <div className="col-md-12 mt-3">
-                    <button type="submit" class="btn btn-primary float-start" onClick={formik.handleSubmit} >Submit</button>
+                    <button type="submit" className="btn btn-primary float-start" onClick={formik.handleSubmit} >Submit</button>
                 </div>
             </form>
         </div>

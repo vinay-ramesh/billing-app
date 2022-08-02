@@ -9,7 +9,7 @@ const Home = (props) => {
             </div> */}
 
             <div className="images"  >
-                {<img src={images} class="img-fluid" style={{ height: "100%", width: "100%" }} alt="Responsive image"></img>}
+                {<img src={images} className="img-fluid" style={{ height: "100%", width: "100%" }} alt="Responsive image"></img>}
             </div>
         </div>
     )

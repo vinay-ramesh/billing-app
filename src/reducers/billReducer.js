@@ -8,6 +8,11 @@ const billReducer = (state = initialBill, action) => {
         case "GET_BILL": {
             return [...action.payload]
         }
+        case "DELETE_BILL": {
+            return state.filter((bill) => {
+                return bill._id !== action.payload
+            })
+        }
         default: {
             return state
         }

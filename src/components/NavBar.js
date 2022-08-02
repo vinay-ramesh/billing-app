@@ -6,41 +6,43 @@ import LoginUser from "./User_Components/LoginUser"
 import Account from "./User_Components/Account";
 import MyCustomer from "./Customer_Components/MyCustomer";
 import MyProducts from "./Product_Components/MyProducts";
-import MyBills from "./Bill_Components/MyBills";
 import images from "../images/logo.jpg"
+import BillGenerator from "./Bill_Components/BillGenerator"
+import BillContainer from "./Bill_Components/BillContainer";
+import ViewBills from "./Bill_Components/ViewBills"
 
 const NavBar = (props) => {
     const { isLoggedIn, handleLogin } = props
 
     return (
         <div>
-            <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-                <div class="container-fluid">
-                    <a class="navbar-brand" href="/">
-                        <h1><img src={images} alt="logo" width="10%" height="10%" class="d-inline-block align-text-top" />Billing App</h1>
+            <nav className="navbar navbar-expand-md navbar-dark bg-primary">
+                <div className="container-fluid">
+                    <a className="navbar-brand" href="/">
+                        <h1><img src={images} alt="logo" width="10%" height="10%" className="d-inline-block align-text-top" />Billing App</h1>
                     </a>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav mb-2 mb-lg-0 nav-container justify-content-end">
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="/">Home</a>
+                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul className="navbar-nav mb-2 mb-lg-0 nav-container justify-content-end">
+                            <li className="nav-item">
+                                <a className="nav-link active" aria-current="page" href="/">Home</a>
                             </li>
                             {
                                 isLoggedIn ? (
                                     <>
-                                        <li class="nav-item">
-                                            <a class="nav-link active" aria-current="page" href="/users/account">Account</a>
+                                        <li className="nav-item">
+                                            <a className="nav-link active" aria-current="page" href="/users/account">Account</a>
                                         </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link active" aria-current="page" href="/customers">Customers</a>
+                                        <li className="nav-item">
+                                            <a className="nav-link active" aria-current="page" href="/customers">Customers</a>
                                         </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link active" aria-current="page" href="/products">Products</a>
+                                        <li className="nav-item">
+                                            <a className="nav-link active" aria-current="page" href="/products">Products</a>
                                         </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link active" aria-current="page" href="/bills">Billing</a>
+                                        <li className="nav-item">
+                                            <a className="nav-link active" aria-current="page" href="/bills">Billing</a>
                                         </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link active" aria-current="page" href="#" onClick={() => {
+                                        <li className="nav-item">
+                                            <a className="nav-link active" aria-current="page" onClick={() => {
                                                 alert("Successfully logged out")
                                                 handleLogin()
                                                 props.history.push("/")
@@ -50,11 +52,11 @@ const NavBar = (props) => {
                                     </>
                                 ) : (
                                     <React.Fragment>
-                                        <li class="nav-item">
-                                            <a class="nav-link active" aria-current="page" href="/users/register">Register</a>
+                                        <li className="nav-item">
+                                            <a className="nav-link active" aria-current="page" href="/users/register">Register</a>
                                         </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link active" aria-current="page" href="/users/login">Login</a>
+                                        <li className="nav-item">
+                                            <a className="nav-link active" aria-current="page" href="/users/login">Login</a>
                                         </li>
                                     </React.Fragment>
                                 )
@@ -72,7 +74,9 @@ const NavBar = (props) => {
             }} exact={true} />
             <Route path="/customers" component={MyCustomer} />
             <Route path="/products" component={MyProducts} />
-            <Route path="/bills" component={MyBills} />
+            <Route path="/bills" component={BillContainer} />
+            <Route path="/billing/:billId" component={BillGenerator} />
+            <Route path="/bill/all" component={ViewBills} />
         </div >
     )
 }

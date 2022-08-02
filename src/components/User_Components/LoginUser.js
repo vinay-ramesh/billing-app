@@ -50,7 +50,9 @@ const LoginUser = (props) => {
         <div className="container d-flex justify-content-center align-items-center">
             <div className="col-md-6 text-center">
                 <h2 className="col-md-12 mt-4">Login</h2>
-                {serverError && <p>{serverError}</p>}
+                <div class=" h4 text-center invalid-feedback">
+                    {serverError && <p>{serverError}</p>}
+                </div>
                 <form onSubmit={formik.handleSubmit}>
                     <input class="form-control"
                         type="email"
