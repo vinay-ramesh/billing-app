@@ -66,7 +66,7 @@ const RegisterUser = (props) => {
                             value={formik.values.username}
                             onChange={formik.handleChange}
                             name="username"
-                        /> <div class="h4 invalid-feedback">
+                        /> <div className="h4 invalid-feedback">
                             {formik.errors.username}
                         </div>
                     </div>
@@ -79,7 +79,7 @@ const RegisterUser = (props) => {
                             value={formik.values.email}
                             onChange={formik.handleChange}
                             name="email"
-                        /> <div class="h4 invalid-feedback">
+                        /> <div className="h4 invalid-feedback">
                             {formik.errors.email}
                         </div>
                     </div>
@@ -92,7 +92,7 @@ const RegisterUser = (props) => {
                             value={formik.values.password}
                             onChange={formik.handleChange}
                             name="password"
-                        /> <div class="h4 invalid-feedback">
+                        /> <div className="h4 invalid-feedback">
                             {formik.errors.password}
                         </div>
                     </div>
@@ -105,7 +105,7 @@ const RegisterUser = (props) => {
                             value={formik.values.businessName}
                             onChange={formik.handleChange}
                             name="businessName"
-                        /><div class="h4 invalid-feedback">
+                        /><div className="h4 invalid-feedback">
                             {formik.errors.businessName}
                         </div>
                     </div>
@@ -119,13 +119,13 @@ const RegisterUser = (props) => {
                             onChange={formik.handleChange}
                             name="address"
                         />
-                        <div class="h4 invalid-feedback">
+                        <div className="h4 invalid-feedback">
                             {formik.errors.address}
                         </div>
                     </div>
 
                     <div className="col-md-12 mt-3">
-                        <button type="submit" class="btn btn-primary float-start" onClick={formik.handleSubmit} >Submit</button>
+                        <button type="submit" className="btn btn-primary float-start" onClick={formik.handleSubmit} >Submit</button>
                     </div>
                 </form>
             </div>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { useSelector, useDispatch } from "react-redux"
+import { /* useSelector */ useDispatch } from "react-redux"
 import { asyncInitialUserDetailsFetch } from "./actions/userActions"
 import NavBar from "./components/NavBar"
 import './Style.css'
@@ -10,7 +10,7 @@ const App = (props) => {
     const [isLoading, setIsLoading] = useState(true)
 
 
-    const allBills = useSelector((state) => {
+    /* const allBills = useSelector((state) => {
         return state.bills
     })
 
@@ -24,10 +24,10 @@ const App = (props) => {
 
     const allProducts = useSelector((state) => {
         return state.products
-    })
+    }) */
     const isTokenFound = localStorage.hasOwnProperty("token")
 
-    console.log("isloading", isLoading)
+    // console.log("isloading", isLoading)
     const handleLogin = () => {
         setIsLoggedIn(!isLoggedIn)
     }
@@ -46,7 +46,6 @@ const App = (props) => {
         if (localStorage.getItem("token")) {
             handleLogin()
         }
-
     }, [])
 
 

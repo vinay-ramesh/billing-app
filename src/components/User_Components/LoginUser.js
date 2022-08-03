@@ -54,14 +54,14 @@ const LoginUser = (props) => {
                     {serverError && <p>{serverError}</p>}
                 </div>
                 <form onSubmit={formik.handleSubmit}>
-                    <input class="form-control"
+                    <input className="form-control"
                         type="email"
                         placeholder="Enter email"
                         value={formik.values.email}
                         onChange={formik.handleChange}
                         name="email"
                     />
-                    <div class=" h4 invalid-feedback">
+                    <div className=" h4 invalid-feedback">
                         {formik.errors.email}
                     </div>
 
@@ -74,12 +74,12 @@ const LoginUser = (props) => {
                             name="password"
                         />
                     </div>
-                    <div class="h4 invalid-feedback">
+                    <div className="h4 invalid-feedback">
                         {formik.errors.password}
                     </div>
 
                     <div className="col-md-12 mt-3 ">
-                        <button type="submit" class="btn btn-primary float-start">Submit</button>
+                        <button type="submit" className="btn btn-primary float-start">Submit</button>
                     </div>
                 </form>
             </div>

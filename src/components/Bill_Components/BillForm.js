@@ -67,61 +67,89 @@ const BillForm = (props) => {
     }
 
     return (
-        <div>
-            <h3>Bill form</h3>
+        <div className="container">
+            <div className="col-md-6">
+                <h3>Bill Form</h3>
+            </div>
             <form onSubmit={formik.handleSubmit}>
-                <label>Enter Date</label> <br />
-                <input
-                    name="date"
-                    type="date"
-                    placeholder="dd-mm-yyyy"
-                    value={formik.values.date}
-                    onChange={formik.handleChange}
-                />{formik.errors.date}
-                <br /><br />
-
-                <label>Customer</label><br />
-                <select onChange={formik.handleChange} name="customer" >
-                    <option value="">Select Customer</option>
-                    {customersInfo.map((customer, index) => {
-                        return <option value={customer._id} key={index}>{customer.name}</option>
-                    })}
-                </select>
-
-                {
-                    formFields.map((product, index) => {
-                        return (
-                            <div key={index}>
-                                <label>Product</label>
-                                <select
-                                    onChange={(e) => {
-                                        handleChange(e, index)
-                                    }} name="product" >
-                                    <option value="">Select product</option>
-                                    {
-                                        productsInfo.map((ele) => {
-                                            return <option key={ele._id} value={ele._id}>{ele.name}</option>
-                                        })
-                                    }
-                                </select>
-                                <label>Quantity</label>
-                                <input
-                                    name="quantity"
-                                    type="number"
-                                    placeholder="ex: 1"
-                                    value={product.quantity}
-                                    onChange={(e) => {
-                                        handleChange(e, index)
-                                    }}
-                                />
-                                <br /><br />
-                                {formFields.length > 1 && <button onClick={() => {
-                                    handleRemove(index)
-                                }}>Remove</button>}
+                <div className="container text-left p-3">
+                    <div className="row">
+                        <div className="col-md-2">
+                            <label>Enter Date</label> <br />
+                            <input
+                                name="date"
+                                type="date"
+                                placeholder="dd-mm-yyyy"
+                                value={formik.values.date}
+                                onChange={formik.handleChange}
+                            />
+                            <div className="h4 invalid-feedback">
+                                {formik.errors.date}
                             </div>
-                        )
-                    })
-                }
+                        </div>
+                        <div className="col-md-2">
+                            <label>Customer</label><br />
+                            <select onChange={formik.handleChange} name="customer" >
+                                <option value="">Select Customer</option>
+                                {customersInfo.map((customer, index) => {
+                                    return <option value={customer._id} key={index}>{customer.name}</option>
+                                })}
+                            </select>
+                        </div>
+                        <div className="col-md-2">
+                            {
+                                formFields.map((product, index) => {
+                                    return (
+                                        <div key={index}>
+                                            <div>
+                                                <div className="container">
+                                                    <div className="row">
+                                                        <div className="col">
+                                                            <label>Product</label>
+                                                            <select
+                                                                onChange={(e) => {
+                                                                    handleChange(e, index)
+                                                                }} name="product" >
+                                                                <option value="">Select product</option>
+                                                                {
+                                                                    productsInfo.map((ele) => {
+                                                                        return <option key={ele._id} value={ele._id}>{ele.name}</option>
+                                                                    })
+                                                                }
+                                                            </select>
+                                                        </div>
+                                                        <div className="col">
+                                                            <label style={{ textAlign: "left" }}>Quantity</label>
+                                                            <input style={{
+                                                                width: "150px",
+                                                                height: "26.5px"
+                                                            }}
+                                                                name="quantity"
+                                                                type="number"
+                                                                placeholder="ex: 1"
+                                                                value={product.quantity}
+                                                                onChange={(e) => {
+                                                                    handleChange(e, index)
+                                                                }}
+                                                            />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    {formFields.length > 1 && <button className=" float float-center btn-primary" onClick={() => {
+                                                        handleRemove(index)
+                                                    }}>Remove</button>}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )
+                                })
+                            }
+                        </div>
+                    </div>
+                </div>
+
+
                 <button type="button" onClick={handleAddMore}>Add More</button>
                 <input type="submit" value="save" />
             </form>
@@ -130,3 +158,45 @@ const BillForm = (props) => {
 }
 
 export default BillForm
+
+/* <div>
+                                                <div className="col-md-3 ">
+                                                    <label>Product</label>
+                                                    <select
+                                                        onChange={(e) => {
+                                                            handleChange(e, index)
+                                                        }} name="product" >
+                                                        <option value="">Select product</option>
+                                                        {
+                                                            productsInfo.map((ele) => {
+                                                                return <option key={ele._id} value={ele._id}>{ele.name}</option>
+                                                            })
+                                                        }
+                                                    </select>
+                                                </div>
+                                                <div className="col-md-3" style={{
+                                                    position: "absolute",
+                                                    left: "70%",
+                                                    width: "160px",
+                                                    bottom: "67%"
+                                                }}>
+                                                    <label style={{ textAlign: "left" }}>Quantity</label>
+                                                    <input style={{
+                                                        width: "150px",
+                                                        height: "26.5px"
+                                                    }}
+                                                        name="quantity"
+                                                        type="number"
+                                                        placeholder="ex: 1"
+                                                        value={product.quantity}
+                                                        onChange={(e) => {
+                                                            handleChange(e, index)
+                                                        }}
+                                                    />
+                                                </div>
+                                                <div className="col-md-12 mt-3">
+                                                    {formFields.length > 1 && <button className="btn btn-primary float-left" onClick={() => {
+                                                        handleRemove(index)
+                                                    }}>Remove</button>}
+                                                </div>
+                                            </div> */

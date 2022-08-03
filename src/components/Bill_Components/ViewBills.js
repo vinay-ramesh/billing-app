@@ -46,7 +46,10 @@ const ViewBills = (props) => {
     const currentProductDetails = allCustomerBills()
 
     const handleDeleteBill = (id) => {
-        dispatch(startDeleteBill(id))
+        const confirmRemoveProduct = window.confirm("Are you sure?")
+        if (confirmRemoveProduct) {
+            dispatch(startDeleteBill(id))
+        }
     }
 
     return (

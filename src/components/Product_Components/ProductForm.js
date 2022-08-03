@@ -47,7 +47,7 @@ const ProductForm = (props) => {
                     value={formik.values.name}
                     onChange={formik.handleChange}
                 />
-                <div class="h4 invalid-feedback">
+                <div className="h4 invalid-feedback">
                     {formik.errors.name}
                 </div>
 
@@ -59,7 +59,7 @@ const ProductForm = (props) => {
                     value={formik.values.price}
                     onChange={formik.handleChange}
                 />
-                <div class="h4 invalid-feedback">
+                <div className="h4 invalid-feedback">
                     {formik.errors.price}
                 </div>
 
