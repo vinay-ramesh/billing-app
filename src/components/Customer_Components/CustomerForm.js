@@ -54,7 +54,7 @@ const CustomerForm = (props) => {
                     onChange={formik.handleChange}
                     name="name"
                 />
-                <div class="h4 invalid-feedback">
+                <div className="h4 invalid-feedback">
                     {formik.errors.name}
                 </div>
 
@@ -66,7 +66,7 @@ const CustomerForm = (props) => {
                     onChange={formik.handleChange}
                     name="mobile"
                 />
-                <div class=" h4 invalid-feedback">
+                <div className=" h4 invalid-feedback">
                     {formik.errors.mobile}
                 </div>
 
@@ -79,7 +79,7 @@ const CustomerForm = (props) => {
                     onChange={formik.handleChange}
                     name="email"
                 />
-                <div class=" h4 invalid-feedback">
+                <div className=" h4 invalid-feedback">
                     {formik.errors.email}
                 </div>
 

@@ -37,7 +37,7 @@ const CustomerItem = (props) => {
                     ) : (
                         <div>
                             <table className="table table-hover table-striped">
-                                <thead class="thead-dark">
+                                <thead className="thead-dark">
                                     <tr>
                                         <th>Name</th>
                                         <th>Phone Number</th>
@@ -54,10 +54,10 @@ const CustomerItem = (props) => {
                                                     <td>{cust.name}</td>
                                                     <td>{cust.email}</td>
                                                     <td>{cust.mobile}</td>
-                                                    <td><button onClick={() => { handleCustomerToggle(cust._id) }}><i class="bi bi-pencil-fill"></i></button></td>
+                                                    <td><button onClick={() => { handleCustomerToggle(cust._id) }}><i className="bi bi-pencil-fill"></i></button></td>
                                                     <td><button onClick={() => {
                                                         handleCustomerRemove(cust._id)
-                                                    }}><i class="bi bi-trash3-fill"></i></button></td>
+                                                    }}><i className="bi bi-trash3-fill"></i></button></td>
                                                 </tr>
                                             )
                                         })

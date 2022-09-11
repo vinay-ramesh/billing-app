@@ -4,10 +4,10 @@ import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import App from "./App";
 import configureStore from "./store/configureStore";
-import { asyncGetUsers, asyncInitialUserDetailsFetch } from "./actions/userActions"
-import { startGetProduct } from "./actions/productActions"
+import { /* asyncGetUsers */ asyncInitialUserDetailsFetch } from "./actions/userActions"
+/* import { startGetProduct } from "./actions/productActions"
 import { asyncGetCustomers } from "./actions/customerActions"
-import { startGetBill } from "./actions/billActions";
+import { startGetBill } from "./actions/billActions"; */
 
 
 const store = configureStore()

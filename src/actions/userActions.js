@@ -16,6 +16,7 @@ export const asyncGetUsers = () => {
                 dispatch(setUsers(users))
             })
             .catch((error) => {
+                // if (error.messsage === "")
                 console.log(error.message)
             })
     }

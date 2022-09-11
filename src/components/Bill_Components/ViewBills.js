@@ -53,35 +53,79 @@ const ViewBills = (props) => {
     }
 
     return (
-        <div>
-            {
-                currentProductDetails.map((ele, index) => {
-                    return (
-                        <div key={index}>
-                            <div>
-                                <h4>Customer - {ele.customerName}</h4>
+        <div className="container-box">
+            <div className="p-5">
+                <button onClick={() => {
+                    props.history.push("/bills")
+                }}><i className="bi bi-skip-backward"></i>Back
+                </button>
+                {
+                    currentProductDetails.map((ele, index) => {
+                        return (
+                            <div key={index}>
+                                <div className="container text-centre">
+                                    <div className="row">
+                                        <div className="col-md-4 p-2">
+                                            <div className="card">
+                                                <div>
+                                                    <h4>Customer - {ele.customerName}</h4>
+                                                </div>
+                                                <div>
+                                                    {ele.products.map((item, index) => {
+                                                        return (
+                                                            <p key={index}>{`${item.name} - ${item.quantity} - ${item.subTotal}`}</p>
+                                                        )
+                                                    })}
+                                                </div>
+                                                <h5>Total - {ele.total}</h5>
+                                                <div>
+                                                    <button onClick={() => {
+                                                        handleDeleteBill(ele.billId)
+                                                    }}>X</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div >
-                                <ol>
-                                    {ele.products.map((item, index) => {
-                                        return (
-                                            <li key={index}>{`${item.name} - ${item.quantity} - ${item.subTotal}`}</li>
-                                        )
-                                    })}
-                                </ol>
-                            </div>
-                            <h4>Total - {ele.total}</h4>
-                            <div>
-                                <button onClick={() => {
-                                    handleDeleteBill(ele.billId)
-                                }}>X</button>
-                            </div>
-                        </div>
-                    )
-                })
-            }
+                        )
+                    })
+                }
+            </div>
         </div>
     )
 }
 
 export default ViewBills
+
+{/* <div className="card">
+                        <div className="card-body">
+                            <h5 className="card-title"><i className="bi bi-box"></i> - {name}</h5>
+                            <h6 className="card-subtitle mb-2"><i className="bi bi-currency-rupee"></i> - {price}</h6>
+                            <button onClick={handleToggle}><i className="bi bi-pencil-fill"></i></button>
+                            <button onClick={() => {
+                                handleRemoveProduct(_id)
+                            }}><i className="bi bi-trash3-fill"></i></button>
+                        </div>
+                    </div> */}
+
+/* 
+<div className="card">
+                                                <div>
+                                                    <h4>Customer - {ele.customerName}</h4>
+                                                </div>
+                                                <div>
+                                                    {ele.products.map((item, index) => {
+                                                        return (
+                                                            <p key={index}>{`${item.name} - ${item.quantity} - ${item.subTotal}`}</p>
+                                                        )
+                                                    })}
+                                                </div>
+                                                <h5>Total - {ele.total}</h5>
+                                                <div>
+                                                    <button onClick={() => {
+                                                        handleDeleteBill(ele.billId)
+                                                    }}>X</button>
+                                                </div>
+                                            </div>
+ */

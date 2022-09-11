@@ -29,6 +29,9 @@ const BillGenerator = (props) => {
 
     return (
         <div>
+            <button onClick={() => {
+                props.history.push("/bills")
+            }}><i class="bi bi-skip-backward"></i>Back</button>
             <div ref={ref}>
                 <h2>{allCustomers.name}</h2>
                 <ul>

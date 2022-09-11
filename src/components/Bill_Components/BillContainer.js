@@ -9,12 +9,11 @@ const BillContainer = (props) => {
         history.push("/bill/all")
     }
     return (
-        <div>
-            <div>
-                <button onClick={handleViewAllBill}>View All</button>
-            </div>
-
+        <div className="container-fluid p-2">
             <BillForm />
+            <div className="container p-2">
+                <button onClick={handleViewAllBill}>View All Bills</button>
+            </div>
         </div>
     )
 }

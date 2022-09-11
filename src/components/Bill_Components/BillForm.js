@@ -9,7 +9,7 @@ const billValidationSchema = Yup.object().shape({
     date: Yup.date()
         .required("Provide date of billing!"),
     customer: Yup.string()
-        .required("Provide Customer Info!")
+        .required("Required Customer Info!")
 })
 
 const BillForm = (props) => {
@@ -75,7 +75,7 @@ const BillForm = (props) => {
                 <div className="container text-left p-3">
                     <div className="row">
                         <div className="col-md-2">
-                            <label>Enter Date</label> <br />
+                            <label className="h6">Enter Date</label> <br />
                             <input
                                 name="date"
                                 type="date"
@@ -88,13 +88,16 @@ const BillForm = (props) => {
                             </div>
                         </div>
                         <div className="col-md-2">
-                            <label>Customer</label><br />
+                            <label className="h6">Customer</label><br />
                             <select onChange={formik.handleChange} name="customer" >
                                 <option value="">Select Customer</option>
                                 {customersInfo.map((customer, index) => {
                                     return <option value={customer._id} key={index}>{customer.name}</option>
                                 })}
                             </select>
+                            <div className="h4 invalid-feedback">
+                                {formik.errors.customer}
+                            </div>
                         </div>
                         <div className="col-md-2">
                             {
@@ -102,10 +105,10 @@ const BillForm = (props) => {
                                     return (
                                         <div key={index}>
                                             <div>
-                                                <div className="container">
+                                                <div className="container-fluid">
                                                     <div className="row">
                                                         <div className="col">
-                                                            <label>Product</label>
+                                                            <label className="h6">Product</label>
                                                             <select
                                                                 onChange={(e) => {
                                                                     handleChange(e, index)
@@ -119,7 +122,7 @@ const BillForm = (props) => {
                                                             </select>
                                                         </div>
                                                         <div className="col">
-                                                            <label style={{ textAlign: "left" }}>Quantity</label>
+                                                            <label style={{ textAlign: "left" }} className="h6">Quantity</label>
                                                             <input style={{
                                                                 width: "150px",
                                                                 height: "26.5px"
@@ -135,10 +138,11 @@ const BillForm = (props) => {
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div>
-                                                    {formFields.length > 1 && <button className=" float float-center btn-primary" onClick={() => {
-                                                        handleRemove(index)
-                                                    }}>Remove</button>}
+                                                <div className="col-md-12 p-2 mx-5">
+                                                    {formFields.length > 1 && <button
+                                                        onClick={() => {
+                                                            handleRemove(index)
+                                                        }}><i class="bi bi-trash"></i></button>}
                                                 </div>
                                             </div>
                                         </div>
@@ -148,55 +152,15 @@ const BillForm = (props) => {
                         </div>
                     </div>
                 </div>
-
-
-                <button type="button" onClick={handleAddMore}>Add More</button>
-                <input type="submit" value="save" />
-            </form>
-        </div>
+                <div className="row">
+                    <div className="col-md-12">
+                        <button type="button" className="mx-1" onClick={handleAddMore}><i class="bi bi-cart-plus-fill"></i>Add to Cart</button>
+                        <button type="submit" value="save">Save</button>
+                    </div>
+                </div>
+            </form >
+        </div >
     )
 }
 
 export default BillForm
-
-/* <div>
-                                                <div className="col-md-3 ">
-                                                    <label>Product</label>
-                                                    <select
-                                                        onChange={(e) => {
-                                                            handleChange(e, index)
-                                                        }} name="product" >
-                                                        <option value="">Select product</option>
-                                                        {
-                                                            productsInfo.map((ele) => {
-                                                                return <option key={ele._id} value={ele._id}>{ele.name}</option>
-                                                            })
-                                                        }
-                                                    </select>
-                                                </div>
-                                                <div className="col-md-3" style={{
-                                                    position: "absolute",
-                                                    left: "70%",
-                                                    width: "160px",
-                                                    bottom: "67%"
-                                                }}>
-                                                    <label style={{ textAlign: "left" }}>Quantity</label>
-                                                    <input style={{
-                                                        width: "150px",
-                                                        height: "26.5px"
-                                                    }}
-                                                        name="quantity"
-                                                        type="number"
-                                                        placeholder="ex: 1"
-                                                        value={product.quantity}
-                                                        onChange={(e) => {
-                                                            handleChange(e, index)
-                                                        }}
-                                                    />
-                                                </div>
-                                                <div className="col-md-12 mt-3">
-                                                    {formFields.length > 1 && <button className="btn btn-primary float-left" onClick={() => {
-                                                        handleRemove(index)
-                                                    }}>Remove</button>}
-                                                </div>
-                                            </div> */
